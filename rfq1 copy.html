@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link type="text/css" rel="stylesheet" href="stylesheet3.css" />
+  <link type="text/css" rel="stylesheet" href="stylesheet4.css" />
+  <link type="text/css" rel="stylesheet" href="javatest.css" />
+  <link type="text/css" rel="stylesheet" href="styleFirst.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+  <title>RFQ</title>
+</head>
+
+<body>
+  <div id="nav-main" class="navigation-bar">
+    <div id="navigation" class="navb1 list-group list-group-flush">
+      <a id="changeto" class="list-group-item" href="#">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i></a>
+      <a id="dashboard" class="list-group-item" onclick="displaydashboard()" href="#"><i class="fa fa-tachometer fa-fw"
+          aria-hidden="true"></i></a>
+      <a id="reff" class="list-group-item" onclick="CallAPI()" href="#"><i class="fa fa-archive fa-fw"
+          aria-hidden="true"></i></a>
+      <a id="vendor" class="list-group-item" href="#"><i class="fa fa-shopping-bag fa-fw" aria-hidden="true"></i></a>
+      <a id="operators" class="list-group-item" href="#"><i class="fa fa-users fa-fw" aria-hidden="true"></i></a>
+      <a id="help" class="list-group-item" href="#"><i class="fa fa-question-circle fa-fw" aria-hidden="true"></i></a>
+    </div>
+    <div id="hideMe" class="navb2 list-group list-group-flush">
+      <a class="list-group-item"> </a>
+      <a class="list-group-item" onclick="displaydashboard()" href="#">Dashboard</a>
+      <a class="list-group-item" onclick="CallAPI()" href="#">RFQs</a>
+      <a class="list-group-item" href="#">Vendor</a>
+      <a class="list-group-item" href="#">Operators</a>
+      <a class="list-group-item" href="#">Help</a>
+    </div>
+  </div>
+  <div id="homes" class="myhomes">
+    <h1>Welcome Home</h1>
+
+
+    <!-- <a href="index.html" class="f90-logout-button">Logout</a> -->
+  </div>
+  <div id="record">
+    <div class="topic">
+      <div class="topnav topleft" style="color:  #252733;;">RFQs</div>
+      <div class="topnav topmiddle">
+        <form class="search" action="">
+          <input class="form-control-sm" type="search" placeholder="Search" />
+          <button class="btn-sm" type="submit">
+            <i class="fa fa-search text-left" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+      <div id="nameId" class="topnav topright">
+        <a>Jones Ferdinand &nbsp <span><img src="chat1.jpg"/></span>
+          </a>
+          <!-- <i class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 26px"></i> -->
+      </div>
+    </div>
+    <div id="buttons">
+      <div class="left_btn">
+        <button class="button button1" onclick="allFunc()">All RFQs</button>
+        <button class="button button2">ACTIVE</button>
+        <button class="button button3">ARCHIVE</button>
+      </div>
+      <div class="right_btn">
+        <button class="button4"><a href="#">CREATE RFQs</a></button>
+        <button class="button5"><a href="#">DRAFTS</a></button>
+      </div>
+    </div>
+    <div id="originalList" class="rfq_details">
+      <div class="grid-sort">
+        <div class="space"></div>
+        <div class="private">
+          <i id="private-color" onclick="pvtFunc()" class="fa fa-stop" aria-hidden="true"
+            style="color: #dd22bf; cursor: pointer;"></i>&nbsp;Private
+        </div>
+        <div class="public">
+          <i id="public-color" onclick="pubFunc()" class="fa fa-stop" aria-hidden="true"
+            style="color: #8392f6;cursor: pointer;"></i>&nbsp;Public
+        </div>
+        <div class="sort">
+          <i class="fa fa-sort-amount-desc" aria-hidden="true" style="color: #c5c7cd"></i>&nbsp;Sort
+        </div>
+        <div class="filter">
+          <i class="fa fa-filter" aria-hidden="true" style="color: #c5c7cd"></i>&nbsp;Filter
+        </div>
+      </div>
+      <div class="grid-container">
+        <div class="item1" style="text-align: left">RFQ details</div>
+        <div class="item2" ">
+            Part number
+          </div>
+          <div class=" item3" ">
+            Engine number
+          </div>
+          <div class=" item4"">
+          Manufacturer
+        </div>
+        <div class="item5" ">Quantity</div>
+          <div class=" item6" ">
+            Target Date
+          </div>
+          <div class=" item7">Deadline</div>
+        <div class="itme8">Priority</div>
+      </div>
+      <div id="showCoupling" class="mainC">
+
+      </div>
+      <!-- <div id="mainoriginal">
+      </div> -->
+      <div class="grid-go">
+        <div class="space"></div>
+        <div class="row-number">
+          Rows per page: &nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true" style="font-size: 14px"></i>
+        </div>
+        <div class="back-front">
+          1-6 of 100 &nbsp;&nbsp;<i class="fa fa-angle-left" aria-hidden="true"
+            style="font-size: 14px"></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"
+            style="font-size: 14px"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="right_status">
+    <!-- For notifications status -->
+    <div class="connection">
+      <button onclick="displayClk1()" id="contact1" class="notify">
+        NOTIFICATIONS</button><button onclick="displayClk2()" id="contact2" class="messages">
+        MESSAGES
+      </button>
+    </div>
+    <!-- <div id="chat-box">
+        hello world
+      </div> -->
+    <div id="notifications">
+      <div class="quotations noti">
+        <div class="noti_header">Quotations</div>
+        <div id="hawklins" class="noti_box">
+          <div class="noti_icon">
+           <img src="chat1.jpg"/>
+          </div>
+          <div class="user_detail noti_data">
+            <div class="noti_user">
+              <a href="#" target="_blank" style="color: blue">Vendor Gabby Hawkins</a>
+              has uploaded bid for
+              <a href="#" target="_blank" style="color: blue">RFQ ID 32453</a>
+            </div>
+            <div class="date d">new date()</div>
+          </div>
+        </div>
+        <div id="jones" class="noti_box">
+          <div class="noti_icon">
+            <img src="image2.jpeg"/>
+          </div>
+          <div class="user_detail noti_data">
+            <div class="noti_user">
+              <a href="#" target="_blank" style="color: blue">Vendor Jacob Jones</a>
+              has edited bid for
+              <a href="#" target="_blank" style="color: blue">RFQ ID 12923</a>
+            </div>
+            <div class="date d">new date()</div>
+          </div>
+        </div>
+      </div>
+      <div class="points noti">
+        <div class="noti_header">Points</div>
+        <div class="noti_box">
+          <div class="user_point noti_data">
+            <div>
+              You have recieved
+              <a href="#" target="_blank" style="color: blue">Blue Points </a>from
+              <a>RFQ ID 70996</a>
+            </div>
+            <div class="date">new date()</div>
+          </div>
+        </div>
+        <div class="noti_box">
+          <div class="user_point noti_data">
+            <div>
+              You have recieved
+              <a href="#" target="_blank" style="color: green">Green Points </a>from
+              <a>RFQ ID 70996</a>
+            </div>
+            <div class="date">new date()</div>
+          </div>
+        </div>
+      </div>
+      <div class="expired noti">
+        <div class="noti_header">Deadlines Reached</div>
+        <div class="user_expired noti_box">
+          <div class="noti_icon">
+            <img src="image2.jpeg" alt="image2">
+          </div>
+          <div class="expired noti_data">
+            <div class="noti_user">
+              <a href="#" target="_blank" style="color: blue">Operator Jacob Jones</a>
+              has closed bids for
+              <a href="#" target="_blank" style="color: blue">RFQ 77094</a>
+            </div>
+            <div class="date d">new date()</div>
+          </div>
+        </div>
+        <div class="user_expired noti_box">
+          <div class="noti_icon">
+            <img src="image3.png" alt="image">
+          </div>
+          <div class="expired noti_data">
+            <div class="noti_user">
+              <a href="#" target="_blank" style="color: blue">Operator Leslie Alexander</a>has confirmed<a href="#"
+                target="_blank" style="color: blue">BID ID 79903</a>for
+              <a href="#" target="_blank" style="color: blue">RFQ ID 73240</a>
+            </div>
+            <div class="date d">new date()</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- For messages -->
+    <div id="chat">
+      <div class="chat_search my-4 ml-2">
+        <form class="form-inline">
+          <input id="chat_srch" class="form-control form-control-sm mx-2" type="search" placeholder="Search"
+            aria-label="Search" />
+          <button id="boss" class="btn btn-sm ml-4" type="submit">
+            <i class="fa fa-search fa-1x"></i>
+          </button>
+        </form>
+      </div>
+      <div class="chat_head">
+        <div class="opven">
+          <button class="v_button">V</button><button class="v_button">O</button>
+        </div>
+        <div class="privacy">
+          <button class="l_button p">Public</button><button class="r_button p">Private</button>
+        </div>
+      </div>
+      <div id="chat_list" class="">
+        <div class="conversation active">
+          <i class="fa fa-user-circle-o fa-2x fa-fw" aria-hidden="true"></i>
+          <div class="title-text">Bruce</div>
+          <div class="created">Jan 12</div>
+          <div onclick="helloFunction()" class="conversation-message">
+            New Message
+          </div>
+        </div>
+        <div class="conversation active">
+          <i class="fa fa-user-circle-o fa-2x fa-fw" aria-hidden="true"></i>
+          <div class="title-text">Bruce</div>
+          <div class="created">Jan 12</div>
+          <div class="conversation-message">New Message</div>
+        </div>
+        <div class="conversation active">
+          <i class="fa fa-user-circle-o fa-2x fa-fw" aria-hidden="true"></i>
+          <div class="title-text">Bruce</div>
+          <div class="created">Jan 12</div>
+          <div class="conversation-message">New Message</div>
+        </div>
+        <div class="conversation active">
+          <i class="fa fa-user-circle-o fa-2x fa-fw" aria-hidden="true"></i>
+          <div class="title-text">Bruce</div>
+          <div class="created">Jan 12</div>
+          <div class="conversation-message">New Message</div>
+        </div>
+        <div class="conversation active">
+          <i class="fa fa-user-circle-o fa-2x fa-fw" aria-hidden="true"></i>
+          <div class="title-text">Bruce</div>
+          <div class="created">Jan 12</div>
+          <div class="conversation-message">New Message</div>
+        </div>
+        <div class="conversation active">
+          <i class="fa fa-user-circle-o fa-2x fa-fw" aria-hidden="true"></i>
+          <div class="title-text">Bruce</div>
+          <div class="created">Jan 12</div>
+          <div class="conversation-message">New Message</div>
+        </div>
+      </div>
+    </div>
+    <div id="mri" class="container-msg">
+      <div class="msg-header">
+        <div class="msg-header-img">
+          <img class="msg-img"" src=" chat1.jpg" />
+        </div>
+        <div class="active">
+          <h4>Bruce</h4>
+          <h6>online</h6>
+        </div>
+        <div class="private-chat-list">Private Chat List</div>
+      </div>
+      <div class="msg-store">
+        <div class="cht cht1">Hi</div>
+        <div class="cht cht2">Hello</div>
+        <div class="cht cht1">I am Rohan</div>
+        <div class="cht cht2">How are you?</div>
+      </div>
+      <div id="mri" class="msg-transfer">
+        <div class="msg-collect">
+          <input class="msg-collect-txt" id="textbox" type="text" />
+        </div>
+        <div class="msg-data">
+          <button class="msg-data-send" id="msg-send">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="javascript.js"></script>
+<script src="javascript1.js"></script>
+<script src="javascript2.js"></script>
+<script src="displayColor.js"></script>
+<script src="chatt.js"></script>
+<script>
+      
+  function CallAPI() {
+    jQuery('#record').fadeIn(3000);
+    jQuery('#right_status').fadeIn(3000);
+    const token = localStorage.getItem("token");
+
+
+    function titleCase(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        // You do not need to check if i is larger than splitStr length, as your for does that for you
+        // Assign it back to the array
+         splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+      }
+      // Directly return the joined string
+      // console.log(splitStr.join(' '));
+     return splitStr.join(' '); 
+    };
+
+
+    function indip(datas){
+      var dataBox = [];
+      for(var j = 0; j<datas.length; j++){
+        var strng = datas[j].component_name;
+        var nStrng = titleCase(strng);
+        dataBox.push(nStrng);
+        
+      }
+      // console.log(dataBox);
+      var stre = dataBox.join(", ");
+      // var stree = titleCase(stre);
+      return stre;
+    }
+    // console.log(token);
+    $.ajax({
+      type: "GET",
+      url: "http://workindipl.herokuapp.com/listofrfq/",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+      dataType: "json",
+      success: function (result, status, xhr) {
+        console.log(result);
+        localStorage.setItem('subResults', JSON.stringify(result));
+        var len = result.length;
+        // console.log(len);
+        for (var i = 1; i <= len; i++) {
+          
+          var patt1 = /\b(\w)/g;
+          var created = result[i].create_date.split('T')[0];
+          var deadDate = result[i].deadline;
+          var targetDt = result[i].targetdate.split('T')[0];
+          var prioSet = result[i].rfq_reach;
+          var subResult = result[i].component_set;
+          console.log(subResult);
+          var componentN = indip(subResult);
+          var patt2 = componentN.match(patt1);
+          var patt3 = patt2[0];
+          // console.log(patt3);
+          // console.log(subResult);
+          var th_str =
+            "<table>" +
+            "<thead>" +
+            "<tr  class = 'myRow' style='cursor: pointer;color:#676769'>" +
+              "<th id='firstL'>" +"<span id='secondL'>"+patt3+"</span>"+"</th>"+
+            "<th class='mainOutline' style ='width: 20%;text-align:left !important'>" +"<span id='thirdL'>"+componentN +"</span>"+"<br/>"+"<span style='font-size: 9px;color:#A4A5A8'>"
+            + 'Created on '+created + "</span>"+ "</p>" +
+            "</th>" +
+            "<th style='width: 14% '>" + '' + "</th>" +
+            "<th style='width: 13%'>" + '' + "</th>" +
+            "<th style='width: 16%'>" + '' + "</th>" +
+            "<th style='width: 8%'>" + '' + "</th>" +
+            "<th class='dateCreated' style='width: 10.5%;color: #252733;font-weight: 600;'>" +
+            targetDt +
+            "</th>" +
+            "<th class='dateEnd' style='width: 11%;color: #252733;font-weight: 600;'>" +
+            deadDate +
+            "</th>" +
+            "<th class='priority' style='width: 7.5%;color: #252733;font-weight: 600;'>" +
+              prioSet +
+            "</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody class = 'addOnMe'>"+"</tbody>"+
+            "</table>";
+
+          
+          // var tbls = document.querySelector('table');
+          // tbls.setAttribute('class',id);
+          $("#showCoupling").append(th_str);
+          var id = result[i].rfq_id;
+          // if(id === i){
+            for(var k = 0; k < subResult.length;k++){
+              console.log(k);
+              var componentChild_Name = subResult[k].component_name;
+              var componentChild_Number = subResult[k].number;
+              var componentChild_Manufacturer = subResult[k].manufacturer;
+              var componentChild_Quantity = subResult[k].quantity;
+              console.log(componentChild_Name);
+              var addRow = 
+               "<tr>" +
+              "<td>" +"<span>"+"</span>"+"</td>"+
+              "<td>" +"<span>"+componentChild_Name +"</span>"+"<br/>"+"<span>"
+              +'Created on '+'created' + "</span>"+ "</p>" +
+             "</td>" +
+              "<td>" + '' + "</td>" +
+              "<td>" + componentChild_Number + "</td>" +
+              "<td>" + componentChild_Manufacturer + "</td>" +
+              "<td>" + componentChild_Quantity + "</td>" +
+              "<td>" +
+              '' +
+              "</td>" +
+              "<td>" +
+              '' +
+              "</td>" +
+              "<td>" +
+               '' +
+              "</td>" +
+              "</tr>" ;
+              
+              // $("table tbody").append(addRow);
+              $('table tbody').append(addRow);
+              console.log(addRow);
+            };
+
+          // }
+          
+          
+        }
+      },
+      error: function (xhr, status, error) {
+        alert(error);
+      },
+    });
+  }
+</script>
+<script>
+  function displaydashboard() {
+    jQuery('#record').fadeOut(2000);
+    jQuery('#right_status').fadeOut(2000);
+  }
+
+</script>
+<script>
+   function pubFunc() {
+    const tbl = document.getElementsByTagName('table');
+    const ln = tbl.length;
+    const table = document.getElementsByClassName('priority');
+    // console.log(table[2].innerHTML);
+    for (var i = 0; i < ln; i++) {
+      const mtbl = tbl[i];
+      if(table[i].innerHTML === 'PVT'){
+        mtbl.style.display = 'none';
+        // jQuery('mtbl').fadeOut(100);
+
+      }
+    }
+  }
+$("#private-color").dblclick(function(){
+  jQuery('table').fadeIn(10);
+});
+  function pvtFunc() {
+    const tbl = document.getElementsByTagName('table');
+    const ln = tbl.length;
+    const table = document.getElementsByClassName('priority');
+    // console.log(table[2].innerHTML);
+    for (var i = 0; i < ln; i++) {
+      const mtbl = tbl[i];
+      if(table[i].innerHTML === 'PUB'){
+        mtbl.style.display = 'none';
+
+      }
+    }
+  }
+  $("#public-color").dblclick(function(){
+  jQuery('table').fadeIn(10);
+});
+  function allFunc(){
+    jQuery('table').fadeIn(100);
+
+  }
+</script>
+
+
+</html>
